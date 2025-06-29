@@ -1,54 +1,51 @@
-from flask import Flask, request, jsonify
 import os
+from flask import Flask, request, jsonify, render_template
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import PromptTemplate
 
-from langchain import LLMChain, PromptTemplate
-from langchain.chat_models import ChatOpenAI
+load_dotenv(override = True)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
-# 1) Configure your OpenAI key in the environment
-#    export OPENAI_API_KEY="sk-..."
-openai_api_key = os.getenv("OPENAI_API_KEY")
-if not openai_api_key:
-    raise ValueError("Please set the OPENAI_API_KEY environment variable")
+# 2) Initialize Chat LLM
+LLM = ChatOpenAI(model = "gpt-4.1")
 
-# 2) Initialize the Chat LLM
-chat = ChatOpenAI(
-    openai_api_key=openai_api_key,
-    model_name="gpt-4o",    # or "gpt-4"
-    temperature=0.2,
-)
-
-# 3) Define a prompt template (system + user)
-template = """You are a Manim code generator.
-Generate a *minimal* Python script defining a Manim Scene subclass
-that fulfills the user’s request.  Respond **only** with valid code.
+# 3) Define prompt template
+template = """You are a code generator.
+So generate code based on the user prompt.
 
 User Request:
 {user_prompt}
-
 """
+
 prompt = PromptTemplate(
     input_variables=["user_prompt"],
     template=template
 )
 
-# 4) Assemble the chain
-chain = LLMChain(llm=chat, prompt=prompt)
+# 4) Create LangChain chain
+chain =  prompt | LLM
 
+# 5) Serve frontend
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+# 6) Backend route for generation
 @app.route("/api/generate", methods=["POST"])
 def generate():
-    data = request.json or {}
-    user_prompt = data.get("prompt", "").strip()
+    data = request.get_json()
+    user_prompt = data.get("prompt", "")
+
     if not user_prompt:
-        return jsonify(error="No prompt provided"), 400
+        return jsonify({"error": "No prompt provided"}), 400
 
     try:
-        # 5) Run the chain
-        code = chain.run(user_prompt).strip()
-        return jsonify(code=code)
+        output = (chain.invoke(user_prompt)).content
+        return jsonify({"code": output})
     except Exception as e:
-        return jsonify(error=str(e)), 500
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

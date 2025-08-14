@@ -41,8 +41,8 @@ logo_uri = safe_logo_data_uri("logo.png")
 
 # Extended demo data with more videos
 demo_data = [
-    (f"{SCRIPT_DIR}\demo_videos\demo1.mp4", "Animating a Parabola", "Watch as ManimAI plots the classic parabola y = x², drawing the axes and tracing the curve from x = -3 to x = 3."),
-    (f"{SCRIPT_DIR}\demo_videos\demo2.mp4", "A dancing cube", "See how we can make a cube dance."),
+    ("demo_videos\demo1.mp4", "Animating a Parabola", "Watch as ManimAI plots the classic parabola y = x², drawing the axes and tracing the curve from x = -3 to x = 3."),
+    ("demo_videos\demo2.mp4", "A dancing cube", "See how we can make a cube dance."),
     ("https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "Parametric Flower", "Complex mathematical visualizations in motion"),
     ("https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4", "Rotating 3D Objects", "Three-dimensional mathematical objects and transformations"),
     ("https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "Function Graphing", "Dynamic function plotting and analysis"),
@@ -344,8 +344,9 @@ for src, caption, description in demo_data:
     if src.startswith("http"):
         video_src = src
     else:
-        p = Path(src)
-        video_src = file_to_data_uri(p, "video/mp4") if p.exists() else ""
+        # This builds the full, correct path that works everywhere
+        video_file_path = SCRIPT_DIR / src
+        video_src = file_to_data_uri(video_file_path, "video/mp4") if video_file_path.exists() else ""
 
     video_tag = (
         f'<video controls preload="metadata" playsinline>'

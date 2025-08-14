@@ -346,6 +346,9 @@ for src, caption, description in demo_data:
     else:
         # This builds the full, correct path that works everywhere
         video_file_path = SCRIPT_DIR / src
+        # --- ADD THESE TWO LINES FOR DEBUGGING ---
+        st.write(f"Checking for video at: {video_file_path}")
+        st.write(f"Does it exist? {video_file_path.exists()}")
         video_src = file_to_data_uri(video_file_path, "video/mp4") if video_file_path.exists() else ""
 
     video_tag = (

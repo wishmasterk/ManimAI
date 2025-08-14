@@ -3,6 +3,17 @@ import base64
 from pathlib import Path
 import streamlit.components.v1 as components
 from backend_processor import process_prompt_to_video
+from clean_up_videos import cleanup_old_videos
+
+# for schedule cleaning
+# ----Check if a secret key is present in the URL's query parameters----
+if 'cleanup' in st.query_params and st.query_params['cleanup'] == 'YOUR_SECRET_KEY':
+    # If the key is correct, run the cleanup function
+    cleanup_old_videos()
+    st.success("Cleanup process triggered successfully!")
+    # Stop the rest of the app from running for this secret call
+    st.stop()
+
 
 # This gets the directory of the currently running script
 SCRIPT_DIR = Path(__file__).parent

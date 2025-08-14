@@ -39,6 +39,3 @@ def cleanup_old_videos():
                 print(f"Error deleting file {file_path}: {e}")
 
     print(f"--- Cleanup complete. Deleted {files_deleted} file(s). ---")
-
-if __name__ == "__main__":
-    cleanup_old_videos()

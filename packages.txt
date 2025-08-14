@@ -1,2 +1,4 @@
+pkg-config
+libcairo2-dev
 ffmpeg
 texlive-full

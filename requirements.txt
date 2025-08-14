@@ -4,3 +4,6 @@ flask
 openai
 dotenv
 langchain_openai
+streamlit
+numpy
+manim

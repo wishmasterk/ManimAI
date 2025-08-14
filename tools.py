@@ -1,9 +1,11 @@
 # This file contains all the functions/Agents which will be used to create a animation video from prompt
+import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage
 
 load_dotenv(override = True)
+os.environ.get("OPENAI_API_KEY")
 
 # --- Agent 1: The Planner ---
 def create_animation_plan(user_prompt: str) -> str:

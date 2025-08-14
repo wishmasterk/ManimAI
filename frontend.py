@@ -7,7 +7,7 @@ from clean_up_videos import cleanup_old_videos
 
 # for schedule cleaning
 # ----Check if a secret key is present in the URL's query parameters----
-if 'cleanup' in st.query_params and st.query_params['cleanup'] == 'YOUR_SECRET_KEY':
+if 'cleanup' in st.query_params and st.query_params['cleanup'] == 'KeshavAgarwal':
     # If the key is correct, run the cleanup function
     cleanup_old_videos()
     st.success("Cleanup process triggered successfully!")

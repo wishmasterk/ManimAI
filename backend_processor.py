@@ -61,7 +61,7 @@ def _render_manim_video(manim_code: str, attempt: int, quality: str) -> Path:
     media_dir.mkdir(exist_ok = True)
 
     # Construct the command to run Manim from the command line.
-    #This block builds the command-line instruction to render the video.
+    # This block builds the command-line instruction to render the video.
     command = [
         "manim", str(script_path), "GeneratedScene", "--format=mp4",
         quality_dict[quality],  # Render in quick, low quality for speed.

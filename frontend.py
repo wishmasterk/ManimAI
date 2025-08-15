@@ -41,14 +41,14 @@ logo_uri = safe_logo_data_uri("logo.png")
 
 # Extended demo data with more videos
 demo_data = [
-    ("demo_videos/demo1.mp4", "Animating a Parabola", "Watch as ManimAI plots the classic parabola y = x², drawing the axes and tracing the curve from x = -3 to x = 3."),
-    ("demo_videos/demo2.mp4", "A dancing cube", "See how we can make a cube dance."),
-    ("https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "Parametric Flower", "Complex mathematical visualizations in motion"),
-    ("https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4", "Rotating 3D Objects", "Three-dimensional mathematical objects and transformations"),
-    ("https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", "Function Graphing", "Dynamic function plotting and analysis"),
-    ("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "Linear Transformations", "Matrix operations visualized through animations"),
-    ("https://www.w3schools.com/html/movie.mp4", "Calculus Concepts", "Derivatives and integrals shown through motion"),
-    ("https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "Fractal Animations", "Self-similar patterns and recursive structures"),
+    ("demo_videos/demo1.mp4", "The Sierpinski Triangle", "Watch a single triangle transform into a stunning fractal through repeated removal."),
+    ("demo_videos/demo2.mp4.mp4", "The Smart Search", "Watch the search zone shrink until the target is found in record time."),
+    ("demo_videos/demo3.mp4.mp4", "Neural Pathways in Motion", "See data pulse through layers, bringing a network to life."),
+    ("demo_videos/demo4.mp4", "Capturing the Space Beneath a curve", "Discover how the area under a rising curve expands as we measure it from the starting point up to a chosen limit."),
+    ("demo_videos/demo5.mp4.mp4", "Growth Showdown", "Watch steady gains meet exponential growth over 20 years."),
+    ("demo_videos/demo6.mp4.mp4", "The Dancing Cube", "See how we can make a cube dance."),
+    ("demo_videos/demo7.mp4.mp4", "The Perfect Arc", "See physics launch a cannonball in a flawless 45° journey."),
+    ("demo_videos/demo8.mp4.mp4", "Animating a Parabola", "Watch as ManimAI plots the classic parabola y = x², drawing the axes and tracing the curve from x = -3 to x = 3."),
 ]
 
 # ----------------- Hero Section -----------------
@@ -466,7 +466,7 @@ with col1:
     prompt = st.text_area(
         "",
         height = 250,
-        placeholder="e.g., Animate a sine wave growing in amplitude...",
+        placeholder = "The more detailed your prompt, the better the result. Describe your animation step-by-step here...",
         label_visibility = "collapsed",
         key = "user_prompt" # imp becoz of the code rerun, it stores the value in it and when the code reches here in next run the value in it get stores to the "prompt" -> this happens for every widget
     )

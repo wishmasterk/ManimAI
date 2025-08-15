@@ -42,13 +42,13 @@ logo_uri = safe_logo_data_uri("logo.png")
 # Extended demo data with more videos
 demo_data = [
     ("demo_videos/demo1.mp4", "The Sierpinski Triangle", "Watch a single triangle transform into a stunning fractal through repeated removal."),
-    ("demo_videos/demo2.mp4.mp4", "The Smart Search", "Watch the search zone shrink until the target is found in record time."),
-    ("demo_videos/demo3.mp4.mp4", "Neural Pathways in Motion", "See data pulse through layers, bringing a network to life."),
+    ("demo_videos/demo2.mp4", "The Smart Search", "Watch the search zone shrink until the target is found in record time."),
+    ("demo_videos/demo3.mp4", "Neural Pathways in Motion", "See data pulse through layers, bringing a network to life."),
     ("demo_videos/demo4.mp4", "Capturing the Space Beneath a curve", "Discover how the area under a rising curve expands as we measure it from the starting point up to a chosen limit."),
-    ("demo_videos/demo5.mp4.mp4", "Growth Showdown", "Watch steady gains meet exponential growth over 20 years."),
-    ("demo_videos/demo6.mp4.mp4", "The Dancing Cube", "See how we can make a cube dance."),
-    ("demo_videos/demo7.mp4.mp4", "The Perfect Arc", "See physics launch a cannonball in a flawless 45° journey."),
-    ("demo_videos/demo8.mp4.mp4", "Animating a Parabola", "Watch as ManimAI plots the classic parabola y = x², drawing the axes and tracing the curve from x = -3 to x = 3."),
+    ("demo_videos/demo5.mp4", "Growth Showdown", "Watch steady gains meet exponential growth over 20 years."),
+    ("demo_videos/demo6.mp4", "The Dancing Cube", "See how we can make a cube dance."),
+    ("demo_videos/demo7.mp4", "The Perfect Arc", "See physics launch a cannonball in a flawless 45° journey."),
+    ("demo_videos/demo8.mp4", "Animating a Parabola", "Watch as ManimAI plots the classic parabola y = x², drawing the axes and tracing the curve from x = -3 to x = 3."),
 ]
 
 # ----------------- Hero Section -----------------
